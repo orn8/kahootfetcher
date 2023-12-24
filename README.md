@@ -17,15 +17,11 @@ KahootFetcher is a tool to get a Kahoot's answers through its UUID. Built with [
 ## Current Features:
 
 - **Simple Design:** Focus on getting the Kahoot answers with no diversions.
-- **Lite Version:** If KahootFetcher didn't work, then use [KahootFetcher Lite](https://orn8.github.io/kahootfetcher/lite), a fool-proof way to get the answers.
+- **Lite Version:** If KahootFetcher didn't work, then use [KahootFetcher Lite](https://orn8.github.io/kahootfetcher/lite), a more robust way to get the answers.
 
 ## Contributing
 
-<<<<<<< HEAD
 KahootFetcher would like to get contributions from the community, even a typo fix will do.
-=======
-VanishGames would like to get contributions from the community (try adding games and stuff).
->>>>>>> 3fa340faa082104ecd123c42ca34c36ca18d802a
 
 If you'd like to contribute, please fork the repo and make changes as you'd like. Pull requests are welcome.
 
@@ -33,6 +29,6 @@ If you'd like to contribute, please fork the repo and make changes as you'd like
 
 ### Our Contributors ✨
 
-<a href="https://github.com/orn8/vanishgames/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=orn8/vanishgames" />
+<a href="https://github.com/orn8/kahootfetcher/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=orn8/kahootfetcher" />
 </a>
