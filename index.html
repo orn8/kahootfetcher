@@ -74,10 +74,17 @@
         border: none;
         cursor: pointer;
         outline: none;
+        transition: background-color 0.3s, transform 0.2s;
     }
+    
     .button:hover {
         background-color: #555;
         color: white;
+        transform: scale(1.05);
+    }
+    
+    .button:active {
+        transform: scale(0.95);
     }
 </style>
 </head>
