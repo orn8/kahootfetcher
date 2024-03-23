@@ -94,9 +94,13 @@
                 alert('Question ' + (i + 1) + ': ' + jumbleAnswer);
             } else if (question.type === 'survey') {
                 alert('Question ' + (i + 1) + ': This question is a poll');
+            } else if (question.type === 'open_ended') {
+                const openEndedAnswers = question.choices.map(choice => choice.answer).join(' OR ');
+                alert('Question ' + (i + 1) + ': ' + openEndedAnswers);
             } else {
                 alert('Question ' + (i + 1) + ': ' + '[' + (correctIndex + 1) + '] ' + color + answerDisplay);
             }
+
         }
     });
 })();
