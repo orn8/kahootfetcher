@@ -102,7 +102,7 @@
 })();
             `;
             navigator.clipboard.writeText(scriptToCopy).then(function() {
-                alert('The script has been copied to your clipboard. After the Kahoot page loads, ' + 
+                alert('The answer-pull script has been copied to your clipboard. After the Kahoot page loads, ' + 
                       'open the console, paste the script, and press Enter to see the answers.');
                 if (isUserOnFirefox()) {
                     alert("You are using Firefox. Please select the 'Raw Data' tab on the opened page before executing the code." + " (Ignore this message if 'devtools.jsonview.enabled' is disabled.)");
