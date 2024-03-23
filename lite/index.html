@@ -43,8 +43,8 @@
 </head>
 <body>
     <button class="button" id="startButton">Start</button>
-    <button class="button" onclick="window.open('https://orn8.github.io/kahootfetcher')">Original Version</button>
-    <button class="button" id="copyButton" style="display: none;">Copy Code</button>
+    <button class="button" onclick="window.open('https://kahootfetcher.oragne.dev')">Original Version</button>
+    <button class="button" id="copyButton" style="display: none;">Copy Script</button>
     <script>
     function isUserOnFirefox() {
             return navigator.userAgent.indexOf("Firefox") > -1;
@@ -53,7 +53,7 @@
             const uuid = prompt("Please enter the Kahoot UUID:");
             const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
             if (uuidPattern.test(uuid)) {
-            	alert("A tab will open with the data of your Kahoot. Please return and copy the code after the tab opens.")
+            	alert("A tab will open with the data of your Kahoot. Please return and copy the answer-pull script after the tab opens.")
                 window.open(`https://kahoot.it/rest/kahoots/${uuid}`, '_blank');
                 document.getElementById('copyButton').style.display = 'inline-block';
             } else {
@@ -76,11 +76,16 @@
     const quizData = JSON.parse(rawData);
     const colorMap = ['Red', 'Blue', 'Yellow', 'Green'];
     quizData.questions.forEach((question, i) => {
-        const correctIndex = question.choices.findIndex(choice => choice.correct);
-        const correctChoice = question.choices[correctIndex];
-        const answerText = correctChoice ? correctChoice.answer : 'No correct answer';
-        const color = colorMap[correctIndex];
-        alert('Question ' + (i + 1) + ': ' + '[' + correctIndex + '] ' + color + ' (' + answerText + ')');
+        if (!question.choices) {
+            alert('Question ' + (i + 1) + ': No answer found');
+        } else {
+            const correctIndex = question.choices.findIndex(choice => choice.correct);
+            const correctChoice = question.choices[correctIndex];
+            const answerText = correctChoice ? correctChoice.answer : undefined;
+            const color = colorMap[correctIndex];
+            const answerDisplay = answerText ? ' (' + answerText + ')' : '';
+            alert('Question ' + (i + 1) + ': ' + '[' + correctIndex + '] ' + color + answerDisplay);
+        }
     });
 })();
             `;

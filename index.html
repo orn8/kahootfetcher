@@ -90,7 +90,7 @@
 </head>
 <body>
     <button class="button" id="startButton">Start</button>
-    <button class="button" onclick="window.open('https://orn8.github.io/kahootfetcher/lite')">Lite Version</button>
+    <button class="button" onclick="window.open('https://kahootfetcher.oragne.dev/lite')">Lite Version</button>
     <div id="corsPopup" style="display: none;">
         <div class="popupContent">
             <button id="closePopup" onclick="closePopup()">
@@ -122,15 +122,19 @@
                 fetch(corsProxyURL + kahootAPIURL, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
                     .then(response => response.json())
                     .then(data => {
-                        
                         const colorMap = ['Red', 'Blue', 'Yellow', 'Green'];
                         const questions = data.questions || [];
                         questions.forEach((question, i) => {
-                            const correctIndex = question.choices.findIndex(choice => choice.correct);
-                            const correctChoice = question.choices[correctIndex];
-                            const answerText = correctChoice ? correctChoice.answer : 'No correct answer';
-                            const color = colorMap[correctIndex];
-                            alert('Question ' + (i + 1) + ': ' + '[' + correctIndex + '] ' + color + ' (' + answerText + ')');
+                            if (!question.choices) {
+                                alert('Question ' + (i + 1) + ': No answer found');
+                            } else {
+                                const correctIndex = question.choices.findIndex(choice => choice.correct);
+                                const correctChoice = question.choices[correctIndex];
+                                const answerText = correctChoice ? correctChoice.answer : undefined;
+                                const color = colorMap[correctIndex];
+                                const answerDisplay = answerText ? ' (' + answerText + ')' : '';
+                                alert('Question ' + (i + 1) + ': ' + '[' + correctIndex + '] ' + color + answerDisplay);
+                            }
                         });
                     })
                     .catch(error => {
