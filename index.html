@@ -125,24 +125,28 @@
                         const colorMap = ['Red', 'Blue', 'Yellow', 'Green'];
                         const questions = data.questions || [];
                         questions.forEach((question, i) => {
-                            if (!question.choices || question.type === 'content') {
-                            alert('Question ' + (i + 1) + ': This is a slide');
-                        } else {
-                            const correctIndex = question.choices.findIndex(choice => choice.correct);
-                            const correctChoice = question.choices[correctIndex];
-                            const answerText = correctChoice ? correctChoice.answer : undefined;
-                            const color = colorMap[correctIndex];
-                            const answerDisplay = answerText ? ' (' + answerText + ')' : '';
-
-                            if (question.type === 'jumble') {
-                                const jumbleAnswer = question.choices.map(choice => choice.answer).join(', ');
-                                alert('Question ' + (i + 1) + ': ' + jumbleAnswer);
-                            } else if (question.type === 'survey') {
-                                alert('Question ' + (i + 1) + ': This question is a poll');
+                            if (!question.choices) {
+                                if (question.type === 'content') {
+                                    alert('Question ' + (i + 1) + ': This is a slide');
+                                } else {
+                                    alert('Question ' + (i + 1) + ': No answers found');
+                                }
                             } else {
-                                alert('Question ' + (i + 1) + ': ' + '[' + (correctIndex + 1) + '] ' + color + answerDisplay);
+                                const correctIndex = question.choices.findIndex(choice => choice.correct);
+                                const correctChoice = question.choices[correctIndex];
+                                const answerText = correctChoice ? correctChoice.answer : undefined;
+                                const color = colorMap[correctIndex];
+                                const answerDisplay = answerText ? ' (' + answerText + ')' : '';
+
+                                if (question.type === 'jumble') {
+                                    const jumbleAnswer = question.choices.map(choice => choice.answer).join(', ');
+                                    alert('Question ' + (i + 1) + ': ' + jumbleAnswer);
+                                } else if (question.type === 'survey') {
+                                    alert('Question ' + (i + 1) + ': This question is a poll');
+                                } else {
+                                    alert('Question ' + (i + 1) + ': ' + '[' + (correctIndex + 1) + '] ' + color + answerDisplay);
+                                }
                             }
-                        }
                         });
                     })
                     .catch(error => {

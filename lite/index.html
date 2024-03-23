@@ -76,8 +76,12 @@
     const quizData = JSON.parse(rawData);
     const colorMap = ['Red', 'Blue', 'Yellow', 'Green'];
     quizData.questions.forEach((question, i) => {
-        if (!question.choices || question.type === 'content') {
-            alert('Question ' + (i + 1) + ': This is a slide');
+        if (!question.choices) {
+            if (question.type === 'content') {
+                alert('Question ' + (i + 1) + ': This is a slide');
+            } else {
+                alert('Question ' + (i + 1) + ': No answers found');
+            }
         } else {
             const correctIndex = question.choices.findIndex(choice => choice.correct);
             const correctChoice = question.choices[correctIndex];
