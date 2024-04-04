@@ -17,49 +17,11 @@
         height: 100vh;
         text-align: center;
     }
-    
-    #corsPopup {
-        background: rgba(0, 0, 0, 0.7);
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-    }
 
     iframe {
         width: 80%;
         height: 80%;
         border: none;
-    }
-
-    .popupContent {
-        text-align: center;
-        color: white;
-        z-index: 1;
-        position: relative;
-    }
-    
-    .popupInstruction {
-        margin-bottom: 20px;
-    }
-
-    #closePopup {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: red;
-        color: white;
-        font-weight: bold;
-        border: none;
-        border-radius: 50%;
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
     }
 
     .button {
@@ -91,33 +53,13 @@
 <body>
     <button class="button" id="startButton">Start</button>
     <button class="button" onclick="window.open('https://kahootfetcher.oragne.dev/lite')">Lite Version</button>
-    <div id="corsPopup" style="display: none;">
-        <div class="popupContent">
-            <button id="closePopup" onclick="closePopup()">
-                X
-            </button>
-            <h1>KahootFetcher</h1>
-            <div class="popupInstruction">
-                <p>Please click "Request temporary access to the demo server" below</p>
-            </div>
-            <iframe src="https://cors-anywhere.herokuapp.com/corsdemo"></iframe>
-        </div>
-    </div>
 
     <script>
-        function closePopup() {
-            document.getElementById('corsPopup').style.display = 'none';
-        }
-
-        window.onload = function() {
-            document.getElementById('corsPopup').style.display = 'flex';
-        };
-        
         document.getElementById('startButton').addEventListener('click', function() {
             const uuid = prompt("Please enter the Kahoot UUID:");
             const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
             if (uuidPattern.test(uuid)) {
-                const corsProxyURL = "https://cors-anywhere.herokuapp.com/";
+                const corsProxyURL = "https://cors-anywhere-oragne.vercel.app/api/cors?url=";
                 const kahootAPIURL = `https://kahoot.it/rest/kahoots/${uuid}`;
                 fetch(corsProxyURL + kahootAPIURL, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
                     .then(response => response.json())
