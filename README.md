@@ -1,6 +1,6 @@
 <div align="center">
   <h1 align="center"><a href="https://orn8.github.io/kahootfetcher">KahootFetcher</a></h1>
-  <h3>Fetch Kahoot answers. (Everything is for educational purposes only)</h3>
+  <h3>Fetch a Kahoot's answers.</h3>
 </div>
 
 </br>
