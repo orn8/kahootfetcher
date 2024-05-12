@@ -64,7 +64,11 @@
                 fetch(corsProxyURL + kahootAPIURL, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
                     .then(response => response.json())
                     .then(data => {
-                        const colorMap = ['Red', 'Blue', 'Yellow', 'Green'];
+                        const colorMap = {
+                            2: ['Blue', 'Red'],
+                            4: ['Red', 'Blue', 'Yellow', 'Green']
+                        };
+
                         const questions = data.questions || [];
                         questions.forEach((question, i) => {
                             if (!question.choices) {
@@ -74,10 +78,11 @@
                                     alert((i + 1) + ': No answers found');
                                 }
                             } else {
+                                const numChoices = question.choices.length;
                                 const correctIndex = question.choices.findIndex(choice => choice.correct);
                                 const correctChoice = question.choices[correctIndex];
                                 const answerText = correctChoice ? correctChoice.answer : undefined;
-                                const color = colorMap[correctIndex];
+                                const color = colorMap[numChoices][correctIndex];
                                 const answerDisplay = answerText ? ' (' + answerText + ')' : '';
 
                                 if (question.type === 'jumble') {
@@ -93,10 +98,10 @@
                                 }
                             }
                         });
+
                     })
                     .catch(error => {
                         console.error('Error fetching Kahoot data: ', error);
-                        alert('Failed to fetch data. Did you click the "Request temporary access to the demo server" on the popup?');
                     });
             } else {
                 alert("Invalid UUID provided. Please ensure the UUID is in the correct format.");
