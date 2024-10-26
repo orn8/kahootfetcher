@@ -74,6 +74,10 @@
                             if (!question.choices) {
                                 if (question.type === 'content') {
                                     alert((i + 1) + ': This is a slide');
+                                } else if (question.type === 'slider') {
+                                    alert((i + 1) + ': ' + question.choiceRange.correct);
+                                } else if (question.type === 'pin_it') {
+                                    alert((i + 1) + ': This question is a \'pin the answer\'.');
                                 } else {
                                     alert((i + 1) + ': No answers found');
                                 }
