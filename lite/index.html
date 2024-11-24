@@ -86,7 +86,7 @@
             } else if (question.type === 'slider') {
                 alert((i + 1) + ': ' + question.choiceRange.correct);
             } else if (question.type === 'pin_it') {
-                alert((i + 1) + ': This question is a \'pin the answer\'.');
+                alert((i + 1) + ': This question is a \\'pin the answer\\'.');
             } else {
                 alert((i + 1) + ': No answers found');
             }
@@ -112,7 +112,7 @@
         }
     });
 })();
-            `;
+`;
             navigator.clipboard.writeText(scriptToCopy).then(function() {
                 alert('The answer-pull script has been copied to your clipboard. After the Kahoot page loads, ' + 
                       'open the console, paste the script, and press Enter to see the answers.');
