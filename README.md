@@ -12,6 +12,12 @@
 
 <br/>
 
+---
+
+### DISCONTINUED: Kahoot has changed their API quite a bit and I can't be bothered changing the code for a project I do not care about anymore.
+
+---
+
 KahootFetcher is a tool to get a Kahoot's answers through its UUID. Built with [HTML](https://www.w3.org/html/) and [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
 ## Current Features:
